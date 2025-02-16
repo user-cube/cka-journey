@@ -8,7 +8,7 @@ last_modified_date: 2025-02-16
 ---
 # Fundamentals
 
-![fundamentals](https://user-cube.github.io/cka/assets/images/001fundamentals/001architecture/kubernetes-cluster-architecture.svg)
+![fundamentals](/assets/images/001fundamentals/001architecture/kubernetes-cluster-architecture.svg)
 
 
 ## Control Plane
