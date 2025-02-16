@@ -1,7 +1,7 @@
 ---
 title: Fundamentals
 layout: home
-nav_order: 1
+nav_order: 2
 has_children: true
 permalink: docs/fundamentals
 last_modified_date: 2025-02-16
