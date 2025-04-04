@@ -15,7 +15,8 @@ Deployments provide the capability to update underlying application instances se
 
 A Deployment is a higher-level resource that manages ReplicaSets and provides declarative updates to applications. When we create a Deployment, we define the desired state, and the Deployment Controller changes the actual state to match our desired state at a controlled rate.
 
-<div markdown="block" class="note">
+<div markdown="block">
+{: .information }
 Deployments manage ReplicaSets, which in turn manage Pods. This layered approach gives us powerful management capabilities while maintaining separation of concerns.
 </div>
 
