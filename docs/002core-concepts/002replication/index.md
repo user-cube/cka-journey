@@ -1,7 +1,7 @@
 ---
 title: Replication
 layout: default
-nav_order: 1
+nav_order: 2
 parent: Core Concepts
 permalink: docs/core-concepts/replication
 last_modified_date: 2025-04-04
