@@ -12,6 +12,12 @@ last_modified_date: 2025-04-04
 
 Kube-proxy is a network proxy that runs on each node in a Kubernetes cluster. It maintains network rules that allow network communication to pods from network sessions inside or outside the cluster.
 
+<div markdown="block">
+{: .important }
+When installing a cluster with Kubeadm, kube-proxy is installed as a pod using a daemonset. This pod can be found inside `kube-system`.
+</div>
+
+
 ## Responsibilities
 
 - Implementing part of the Kubernetes Service concept

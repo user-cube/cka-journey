@@ -12,6 +12,12 @@ last_modified_date: 2025-04-04
 
 The kubelet is the primary node agent that runs on each worker node in a Kubernetes cluster. It takes a set of PodSpecs provided by the Kubernetes API server and ensures that the containers described in those PodSpecs are running and healthy.
 
+<div markdown="block">
+{: .important }
+When installing a cluster with Kubeadm, Kublets are not bundled in this installation. We need to download the binaries for kubelets and install them on the nodes (master and workers).
+</div>
+
+
 ## Responsibilities
 
 - **Pod Lifecycle Management**: Creates, starts, and monitors containers that make up pods
