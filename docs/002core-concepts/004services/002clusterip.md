@@ -5,12 +5,33 @@ nav_order: 1
 parent: Services
 grand_parent: Core Concepts
 permalink: docs/core-concepts/services/cluster-ip
-last_modified_date: 2025-04-04
+last_modified_date: 2025-04-05
 ---
 
 # ClusterIP
 
 ClusterIP is the default service type in Kubernetes that provides internal network connectivity to a set of pods within the cluster.
+
+```
+Internal Client (Pod)
+      |
+      | HTTP Request to Service Name or ClusterIP
+      v
+[Kubernetes ClusterIP Service]
+      |
+      | Routes to any matching pod based on selector
+      v
+┌─────┴──────┬──────────┐
+|            |          |
+[Pod A]    [Pod B]    [Pod C]
+app=db     app=db     app=db
+```
+
+This diagram shows:
+1. An internal client (another pod in the cluster) sends a request to the service name or ClusterIP
+2. The ClusterIP service receives the request
+3. The service routes the traffic to any pod matching the selector
+4. One of the matching pods receives the traffic
 
 ## Understanding ClusterIP
 

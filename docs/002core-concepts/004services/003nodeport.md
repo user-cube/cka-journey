@@ -5,12 +5,39 @@ nav_order: 2
 parent: Services
 grand_parent: Core Concepts
 permalink: docs/core-concepts/services/node-port
-last_modified_date: 2025-04-04
+last_modified_date: 2025-04-05
 ---
 
 # NodePort
 
 NodePort is a service type in Kubernetes that exposes the service on each node's IP at a static port. This allows us to access our applications from outside the Kubernetes cluster.
+
+```
+External Client
+      |
+      | HTTP Request to <NodeIP>:<NodePort>
+      v
+  [Node 1]        [Node 2]        [Node 3]
+NodePort:30080    NodePort:30080   NodePort:30080
+      |               |               |
+      └───────────────┼───────────────┘
+                      |
+                      v
+            [Kubernetes Service]
+                      |
+                      | Routes to any matching pod based on selector
+                      v
+               ┌──────┴──────┐
+               |             |
+         [Pod A]         [Pod B]
+       app=web-app     app=web-app
+```
+
+This diagram shows:
+1. An external client sends a request to a specific node's IP and the NodePort
+2. The request enters through the NodePort, which is the same on all nodes
+3. The Kubernetes service routes the traffic to any matching pod based on the selector
+4. One of the pods matching the selector receives the traffic
 
 ## Understanding NodePort
 

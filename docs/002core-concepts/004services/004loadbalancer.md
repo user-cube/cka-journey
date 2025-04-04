@@ -12,6 +12,37 @@ last_modified_date: 2025-04-05
 
 LoadBalancer is a service type in Kubernetes that exposes applications to the internet by provisioning an external load balancer in cloud environments. It builds on the foundation of NodePort services and adds automated external load balancing.
 
+```
+External Client
+      |
+      | HTTP Request to LoadBalancer IP/Hostname
+      v
+[Cloud Load Balancer]
+      |
+      | Forwards traffic to NodePort on any healthy node
+      v
+  [Node 1]        [Node 2]        [Node 3]
+NodePort:30080    NodePort:30080   NodePort:30080
+      |               |               |
+      └───────────────┼───────────────┘
+                      |
+                      v
+            [Kubernetes Service]
+                      |
+                      | Routes to any matching pod based on selector
+                      v
+               ┌──────┴──────┐
+               |             |
+         [Pod A]         [Pod B]
+       app=web-app     app=web-app
+```
+
+This diagram illustrates how:
+1. An external client sends a request to the cloud load balancer's IP or hostname
+2. The cloud load balancer forwards the traffic to any healthy node on the NodePort
+3. The Kubernetes service receives the traffic and routes it to one of the matching pods
+4. Any pod with the matching label selector can receive the traffic
+
 ## Understanding LoadBalancer
 
 A LoadBalancer service extends the NodePort service type by integrating with cloud providers' load balancing services. When we create a LoadBalancer service, Kubernetes automatically:
